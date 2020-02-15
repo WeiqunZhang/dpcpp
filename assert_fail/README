@@ -1,0 +1,21 @@
+
+* Compile with `make` and and run with `./main3d.dpcpp.DEBUG.ex`.  We get
+    sycl::exception caught: The program was built for 1 devices
+    Build program log for 'Intel(R) Gen9 HD Graphics NEO':
+
+    error: undefined reference to `__assert_fail()'
+
+    error: backend compiler failed build.
+     0 (CL_SUCCESS)
+    End of program
+
+  We are linking with AMReX, but no AMReX code is called and no static
+  variables in AMReX involve gpu code.
+
+
+* Compile with `make DEBUG=FALSE` and run with `./main3d.dpcpp.ex`.
+  No exception is caught.
+
+* Compile with `dpcpp main.cpp` and run with `./a.out`.  No exception
+  is caught.
+
