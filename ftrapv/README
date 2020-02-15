@@ -1,0 +1,36 @@
+Error at link:
+
+InvalidFunctionCall: Unexpected llvm intrinsic: llvm.smul.with.overflow.i32 [Src: /netbatch/donb11442_00/runDir/44/20200118_000000/llvm/llvm-spirv/lib/SPIRV/SPIRVWriter.cpp:1725  ]
+Stack dump:
+0.	Program arguments: /opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv -o /home/u37776/tmp/main-ca36d2.spv -spirv-max-version=1.1 -spirv-ext=+all /home/u37776/tmp/main-506a65.bc 
+1.	Running pass 'LLVMToSPIRV' on module '/home/u37776/tmp/main-506a65.bc'.
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x2bde87)[0x55dc3ff81e87]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x2bcb40)[0x55dc3ff80b40]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x2be08a)[0x55dc3ff8208a]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x12890)[0x7f0d9256d890]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0xc7)[0x7f0d921a8e97]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0x141)[0x7f0d921aa801]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x5278fa)[0x55dc401eb8fa]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x51d817)[0x55dc401e1817]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x51c2b9)[0x55dc401e02b9]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x516f9a)[0x55dc401daf9a]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x5223d2)[0x55dc401e63d2]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x51331b)[0x55dc401d731b]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x512d28)[0x55dc401d6d28]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x6aa35c)[0x55dc4036e35c]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x5268aa)[0x55dc401ea8aa]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x4bac36)[0x55dc4017ec36]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7)[0x7f0d9218bb97]
+/opt/intel/inteloneapi/compiler/2021.1-beta04/linux/bin/llvm-spirv(+0x4b83f4)[0x55dc4017c3f4]
+clang++: error: unable to execute command: Aborted
+/home/u37776/tmp/main3d-f635e3.o: file not recognized: File truncated
+clang++: error: llvm-spirv command failed due to signal (use -v to see invocation)
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+Intel(R) oneAPI DPC++ Compiler 2021.1-beta04 (2020.1.0.0118)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /opt/intel/inteloneapi/compiler/latest/linux/bin
+clang++: note: diagnostic msg: PLEASE submit a bug report to https://software.intel.com/en-us/support/priority-support and include the crash backtrace, preprocessed source, and associated run script.
+clang++: note: diagnostic msg: Error generating preprocessed source(s) - no preprocessable inputs.
+../../amrex/Tools/GNUMake/Make.rules:47: recipe for target 'main3d.dpcpp.DEBUG.ex' failed
+make: *** [main3d.dpcpp.DEBUG.ex] Error 254
