@@ -14,7 +14,9 @@
 
 
 * Compile with `make DEBUG=FALSE` and run with `./main3d.dpcpp.ex`.
-  No exception is caught.
+  No exception is caught.  The difference is due to that AMReX passes
+  `-DNDEBUG` to the compiler when compiling `DEBUG=FALSE`.  If that
+  flag is removed, the same error appears.
 
 * Compile with `dpcpp main.cpp` and run with `./a.out`.  No exception
   is caught.
