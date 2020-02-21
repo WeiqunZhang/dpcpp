@@ -1,0 +1,56 @@
+https://software.intel.com/en-us/support/priority-support
+
+
+* DEBUG mode doesn't work
+* amrex::abort from kernel doesn't actually work
+* Fortran?
+* subgroup primitives shfldown???
+* subgroup synchronicity?
+* are there group level collectives?
+* how to use local memory? local memory accessor?
+ho
+pass a pointer all the way down?
+
+* need to test assert
+* host callback
+* What's __SYCL_INLINE
+* floor is not in std namespace
+* remove AMREX_DEVICE_COMPILE at somepoint
+
+* how to query free device memory?
+* remove AMREX_LAUNCH_KERNEL eventually
+* grep "CUDA_"
+* upto BLassert.H
+
+* __shared__  then we need to go through launch stuff
+* reduce
+
+* scan
+
+* elxiir and callback
+* random
+* profiler
+
+* Cannot make sycl::stream on device
+* how to abort?
+* ccache doesn't work
+
+* -ftrapv makes linker crash
+
+* __sycl_device_only  AMREX_DEVICE_COMPILE?
+
+* local_mem_size: is it per block or the total?
+  
+* How does sycl::parallel_for work? Does it do grid strided?
+  Do I have to launch enough threads, one per iterm?
+
+* malloc's
+  malloc_host(size, context)
+  malloc_shared(size, device, context)
+  malloc_device(size, device, context)
+
+* how to find cudaMemInfo?
+
+* hard to find information on malloc, memcpy
+
+* Note that async behavior of memcpy might be different from cuda
