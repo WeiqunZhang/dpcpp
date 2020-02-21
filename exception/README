@@ -1,4 +1,7 @@
 
+Note: This is resolved by linking with
+`/opt/intel/inteloneapi/compiler/latest/linux/lib/libsycl-glibc.o`.
+
 * Compile with `make` and and run with `./main3d.dpcpp.DEBUG.ex`.  We get
     sycl::exception caught: The program was built for 1 devices
     Build program log for 'Intel(R) Gen9 HD Graphics NEO':
