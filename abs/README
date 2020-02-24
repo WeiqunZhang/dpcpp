@@ -1,4 +1,8 @@
+It seems that `sycl::abs(int)` return unsigned int.
+
 $ make
 $ ./a.out
  sycl::abs(-6) = 6
 -sycl::abs(-6) = 4294967290
+Is sycl::abs(-6) signed? 0
+Is  std::abs(-6) signed? 1
