@@ -1,0 +1,4 @@
+$ make
+$ ./a.out
+ sycl::abs(-6) = 6
+-sycl::abs(-6) = 4294967290
