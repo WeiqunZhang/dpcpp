@@ -1,0 +1,2 @@
+How to use global variable `int* state` in `int my_random()` without
+changing the function signature of `my_random`?
