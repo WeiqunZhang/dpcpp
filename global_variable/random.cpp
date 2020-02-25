@@ -14,7 +14,7 @@ void my_init_random (sycl::ordered_queue& q)
     q.submit([&] (sycl::handler& h) {
         h.single_task([=] () {
             *p = 0;
-            // CUDA: d_state = p;
+            // CUDA: d_state = p; or use cudaMemcpyToSymbol
         });
     });
 }
