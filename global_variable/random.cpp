@@ -2,6 +2,8 @@
 
 namespace {
     int* state = nullptr;
+    __attribute__((opencl_global)) int* d_state;
+    // CUDA: __device__ int* d_state;
 }
 
 void my_init_random (sycl::ordered_queue& q)
@@ -12,6 +14,7 @@ void my_init_random (sycl::ordered_queue& q)
     q.submit([&] (sycl::handler& h) {
         h.single_task([=] () {
             *p = 0;
+            // CUDA: d_state = p;
         });
     });
 }
@@ -24,6 +27,6 @@ void my_finalize_random (sycl::ordered_queue& q)
 int my_random ()
 {
     // error: SYCL kernel cannot use a global variable
-    // return (*state)++;
+    // return (*d_state)++;
     return 0;
 }
