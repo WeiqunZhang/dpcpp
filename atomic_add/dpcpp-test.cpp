@@ -31,7 +31,6 @@ int main (int argc, char* argv[])
     const long n = 128L*128L*128L;
     double* p = (double*)sycl::malloc_device(n*sizeof(double), my_device, my_context);
 
-    auto t0 = std::chrono::high_resolution_clock::now();
     q.submit([&] (sycl::handler& h) {
         h.parallel_for(sycl::nd_range<1>(sycl::range<1>(n),sycl::range<1>(256)),
         [=] (sycl::nd_item<1> item)
@@ -41,14 +40,13 @@ int main (int argc, char* argv[])
         });        
     });
     q.wait();
-    auto t1 = std::chrono::high_resolution_clock::now();
-    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::duration<double>>(t1-t0).count() << std::endl;;
 
     double h_sum = 0.0;
     double* d_sum = (double*)sycl::malloc_device(sizeof(double), my_device, my_context);
     q.submit([&] (sycl::handler& h) { h.memcpy(d_sum, &h_sum, sizeof(double)); });
     q.wait();
 
+    auto t0 = std::chrono::high_resolution_clock::now();
     q.submit([&] (sycl::handler& h) {
         h.parallel_for(sycl::nd_range<1>(sycl::range<1>(n),sycl::range<1>(256)),
         [=] (sycl::nd_item<1> item)
@@ -57,6 +55,8 @@ int main (int argc, char* argv[])
         });
     });
     q.wait();
+    auto t1 = std::chrono::high_resolution_clock::now();
+    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::duration<double>>(t1-t0).count() << std::endl;;
 
     q.submit([&] (sycl::handler& h) { h.memcpy(&h_sum, d_sum, sizeof(double)); });
     q.wait();
