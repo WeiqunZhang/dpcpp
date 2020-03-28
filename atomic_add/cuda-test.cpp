@@ -37,6 +37,12 @@ int main (int argc, char* argv[])
     cudaMemcpy(d_sum, &h_sum, sizeof(double), cudaMemcpyHostToDevice);
     cudaDeviceSynchronize();
 
+    // warming up
+    launch_global<<<n/256, 256>>>([=] __device__ () noexcept {
+        my_atomic_add(d_sum, p[blockDim.x*blockIdx.x + threadIdx.x]);
+    });
+    cudaDeviceSynchronize();
+
     auto t0 = std::chrono::high_resolution_clock::now();
     launch_global<<<n/256, 256>>>([=] __device__ () noexcept {
         my_atomic_add(d_sum, p[blockDim.x*blockIdx.x + threadIdx.x]);
@@ -44,6 +50,17 @@ int main (int argc, char* argv[])
     cudaDeviceSynchronize();
     auto t1 = std::chrono::high_resolution_clock::now();
     std::cout << "Time in my atomic add: " << std::chrono::duration_cast<std::chrono::duration<double>>(t1-t0).count() << std::endl;;
+
+    cudaMemcpy(d_sum, &h_sum, sizeof(double), cudaMemcpyHostToDevice);
+    cudaDeviceSynchronize();
+
+    auto t2 = std::chrono::high_resolution_clock::now();
+    launch_global<<<n/256, 256>>>([=] __device__ () noexcept {
+        atomicAdd(d_sum, p[blockDim.x*blockIdx.x + threadIdx.x]);
+    });
+    cudaDeviceSynchronize();
+    auto t3 = std::chrono::high_resolution_clock::now();
+    std::cout << "Time in CUDA atomicAdd: " << std::chrono::duration_cast<std::chrono::duration<double>>(t3-t2).count() << std::endl;;
 
     cudaMemcpy(&h_sum, d_sum, sizeof(double), cudaMemcpyDeviceToHost);
     cudaDeviceSynchronize();

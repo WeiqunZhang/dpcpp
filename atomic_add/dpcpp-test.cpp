@@ -56,7 +56,7 @@ int main (int argc, char* argv[])
     });
     q.wait();
     auto t1 = std::chrono::high_resolution_clock::now();
-    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::duration<double>>(t1-t0).count() << std::endl;;
+    std::cout << "Time in my atomic add: " << std::chrono::duration_cast<std::chrono::duration<double>>(t1-t0).count() << std::endl;;
 
     q.submit([&] (sycl::handler& h) { h.memcpy(&h_sum, d_sum, sizeof(double)); });
     q.wait();
