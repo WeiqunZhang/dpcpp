@@ -1,0 +1,3 @@
+Is there a way to use local memory in a device function without
+passing a pointer to local memory to it?
+
