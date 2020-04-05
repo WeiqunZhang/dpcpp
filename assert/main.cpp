@@ -4,8 +4,6 @@
 #include <cstdlib>
 namespace sycl = cl::sycl;
 
-#undef NDEBUG
-
 int main (int argc, char* argv[])
 {
     {
