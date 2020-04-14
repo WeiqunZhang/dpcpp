@@ -1,5 +1,7 @@
 DEBUG = FALSE
 
+CRASH = TRUE
+
 USE_DPCPP = TRUE
 
 USE_MPI  = FALSE
@@ -18,7 +20,11 @@ include $(AMREX_HOME)/Tools/GNUMake/Make.defs
 
 include ./Make.package
 
-Pdirs 	:= Base Boundary LinearSolvers/MLMG
+Pdirs := Base Boundary
+ifeq ($(CRASH),TRUE)
+  Pdirs += LinearSolvers/MLMG
+  USERSuffix = .crash
+endif
 
 Ppack	+= $(foreach dir, $(Pdirs), $(AMREX_HOME)/Src/$(dir)/Make.package)
 
