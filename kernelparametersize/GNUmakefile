@@ -2,6 +2,7 @@ DEBUG = FALSE
 
 USE_DPCPP = TRUE
 DPCPP_AOT = TRUE
+DPCPP_SPLIT_KERNEL = FALSE
 
 USE_MPI  = FALSE
 USE_OMP  = FALSE
@@ -26,4 +27,9 @@ Ppack	+= $(foreach dir, $(Pdirs), $(AMREX_HOME)/Src/$(dir)/Make.package)
 include $(Ppack)
 
 include $(AMREX_HOME)/Tools/GNUMake/Make.rules
+
+ifeq ($(DPCPP_SPLIT_KERNEL),TRUE)
+  CXXFLAGS += -fsycl-device-code-split=per_kernel
+endif
+
 

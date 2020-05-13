@@ -42,6 +42,8 @@ wp_ast_eval (struct wp_node* node, double const* x)
 #endif
         break;
     }
+// xxxx recursive calls
+#if 1
     case WP_ADD:
     {
         result = wp_ast_eval(node->l,x) + wp_ast_eval(node->r,x);
@@ -80,6 +82,7 @@ wp_ast_eval (struct wp_node* node, double const* x)
                 wp_ast_eval(((struct wp_f2*)node)->r,x));
         break;
     }
+#endif
     case WP_ADD_VP:
     {
 #if AMREX_DEVICE_COMPILE
@@ -175,7 +178,11 @@ wp_ast_eval (struct wp_node* node, double const* x)
         break;
     }
     default:
+#if defined(AMREX_USE_DPCPP)
+        ;
+#else
         yyerror("wp_ast_eval: unknown node type %d\n", node->type);
+#endif
     }
 
     return result;

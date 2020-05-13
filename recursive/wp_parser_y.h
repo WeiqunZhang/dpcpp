@@ -2,6 +2,7 @@
 #define WP_PARSER_Y_H_
 
 #include "AMReX_GpuQualifiers.H"
+#include <CL/sycl.hpp>
 
 #ifdef __cplusplus
 #include <cstdlib>
@@ -165,8 +166,13 @@ void wp_ast_regvar (struct wp_node* node, char const* name, double* p);
 void wp_ast_regvar_gpu (struct wp_node* node, char const* name, int i);
 void wp_ast_setconst (struct wp_node* node, char const* name, double c);
 
+#ifdef AMREX_USE_DPCPP
+SYCL_EXTERNAL double wp_call_f1 (enum wp_f1_t type, double a);
+SYCL_EXTERNAL double wp_call_f2 (enum wp_f2_t type, double a, double b);
+#else
 AMREX_GPU_HOST_DEVICE double wp_call_f1 (enum wp_f1_t type, double a);
 AMREX_GPU_HOST_DEVICE double wp_call_f2 (enum wp_f2_t type, double a, double b);
+#endif
 
 #ifdef __cplusplus
 }
