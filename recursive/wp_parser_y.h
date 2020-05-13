@@ -2,7 +2,9 @@
 #define WP_PARSER_Y_H_
 
 #include "AMReX_GpuQualifiers.H"
+#ifdef AMREX_USE_DPCPP
 #include <CL/sycl.hpp>
+#endif
 
 #ifdef __cplusplus
 #include <cstdlib>
