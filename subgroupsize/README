@@ -1,0 +1,12 @@
+Run
+    make
+    ./a.out
+
+The run will fail with the following message
+    error: Shuffle Down not supported in SIMD32
+    error: backend compiler failed build.
+     -17 (CL_LINK_PROGRAM_FAILURE)
+    Aborted
+
+Although 32 is list as supported device subgroup size, shuffle_down does not with.
+
