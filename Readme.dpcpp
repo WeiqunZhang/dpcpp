@@ -1,3 +1,5 @@
+The list here is superseded by https://github.com/AMReX-Codes/amrex/blob/development/Docs/Notes/DPCPPWishlist.md
+
 * Recursive function is not supported by SYCL/OpenCL.  Hopefully DPC++
   will support it.  It's crucial to the WarpX code.
 

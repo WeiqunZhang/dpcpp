@@ -1,0 +1,8 @@
+Run
+    make
+    ./a.out
+
+You will see
+    A signal 8 has been raised!
+
+This is caused by JIT compilation.
