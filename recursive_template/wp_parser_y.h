@@ -5,9 +5,12 @@
 #include <AMReX_GpuPrint.H>
 #include <cstdlib>
 #include <cmath>
+#include <iostream>
 #include <type_traits>
 
+#ifdef AMREX_USE_DPCPP
 namespace sycl = cl::sycl;
+#endif
 
 enum wp_f1_t {  // Bulit-in functions with one argument
     WP_SQRT = 1,
@@ -130,7 +133,6 @@ struct wp_node* wp_newf1 (enum wp_f1_t ftype, struct wp_node* l);
 struct wp_node* wp_newf2 (enum wp_f2_t ftype, struct wp_node* l,
                           struct wp_node* r);
 
-AMREX_GPU_HOST_DEVICE
 void yyerror (char const *s, ...);
 
 /*******************************************************************/

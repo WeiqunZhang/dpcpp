@@ -171,8 +171,8 @@ wp_call_f1 (enum wp_f1_t type, double a)
     case WP_POW_P2:      return a*a;
     case WP_POW_P3:      return a*a*a;
     default:
-#if !defined(AMREX_USE_DPCPP)
-        yyerror("wp_call_f1: Unknow function %d", type);
+#if AMREX_DEVICE_COMPILE
+        AMREX_DEVICE_PRINTF("wp_call_f1: Unknow function %d", type);
 #endif
         return 0.0;
     }
@@ -208,8 +208,8 @@ wp_call_f2 (enum wp_f2_t type, double a, double b)
     case WP_MAX:
         return (a > b) ? a : b;
     default:
-#if !defined(AMREX_USE_DPCPP)
-        yyerror("wp_call_f2: Unknow function %d", type);
+#if AMREX_DEVICE_PRINTF
+        AMREX_DEVICE_PRINTF("wp_call_f2: Unknow function %d", type);
 #endif
         return 0.0;
     }
