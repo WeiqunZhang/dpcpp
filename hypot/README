@@ -1,0 +1,8 @@
+Run
+    make
+    ./a.out
+
+With Beta8 On DG1, we got
+
+sycl::hypot on device: 2023.42, 0.00282843
+std::hypot on host: 0.00282843

@@ -27,7 +27,7 @@ int main (int argc, char* argv[])
     q.wait();
 
     double hv[2];
-    q.submit([&] (sycl::handler& h) { h.memcpy(&hv, p, sizeof(double)*2); });
+    q.submit([&] (sycl::handler& h) { h.memcpy(hv, p, sizeof(double)*2); });
     q.wait();
 
     std::cout << "sycl::hypot on device: " << hv[0] << ", " << hv[1] << "\n"
