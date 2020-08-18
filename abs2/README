@@ -2,7 +2,7 @@ Run
     make
     ./a.out
 
-With Beta8 On DG1, we got
+With Beta8, we got
 
 sycl::abs(-0.002) = 2023.424927
 sycl::abs on device: 2023.42
