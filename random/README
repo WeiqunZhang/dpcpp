@@ -1,0 +1,5 @@
+$ make -j16
+$ ./main3d.dpcpp.ex
+  will result in "Floating point exception (core dumped)"
+
+If CRASH is changed to 0 in main.cpp, it runs.
